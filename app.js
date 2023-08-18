@@ -1,4 +1,8 @@
-let div = document.getElementById('parent-div')
+let img = document.getElementById('#hello')
+
+console.log(img)
+
 document.addEventListener('htmx:afterRequest', function(evt) {
-    console.log(JSON.parse(evt.detail.xhr.response))
+
+    let url = JSON.parse(evt.detail.xhr.response).urls.regular
 });

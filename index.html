@@ -10,11 +10,17 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="hello">
 
-<div class="flex flex-col items-center justify-center h-screen">
+    </div>
+
+<div class="flex flex-col gap-4 items-center justify-center h-screen">
+    <img id="image" src="" class="w-[400px] h-[400px] "/>
+
     <button hx-get="https://api.unsplash.com/photos/AUf-6gQYHWg?client_id=f1fEdGf3-cyf1bPne6uholCUd-mC6tRo4FeHqmil20c"
     hx-trigger="click"
-    hx-target="#parent-div"
+    hx-target="#image"
+    class="border border-900-gray px-3 rounded hover:bg-black hover:text-white"
 >
     Generate image
 </button>
