@@ -73,13 +73,13 @@ input:checked + .slider:before {
 
 
 <div class="flex flex-col gap-4 items-center justify-center h-screen">
-    <div class="w-full justify-end items-end bg-red-600">
+    <div class="w-full flex justify-end mr-10">
         <label class="switch">
-            <input type="checkbox" checked>
+            <input type="checkbox" id="checkbox">
             <span class="slider round"></span>
           </label>
     </div>
-    <span class="text-bold">Random image generator with htmx and unsplash API</span>
+    <span class="text-bold" id="caption">Random image generator with htmx and unsplash API</span>
     <div class="p-4 w-full">
         <img id="image" src="https://images.unsplash.com/photo-1594548044919-75fd146b8c60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2565&q=80" alt="Click to generate!" class="w-[400px] h-[400px] "/>
 
@@ -96,7 +96,20 @@ input:checked + .slider:before {
 </div>
 <script>
     let img = document.querySelector('#image')
-    console.log(img.src)
+    let slider = document.querySelector('#checkbox')
+    const body = document.querySelector('body')
+    const caption = document.querySelector('#caption')
+    slider.addEventListener('change', e => {
+        if(slider.checked){
+            body.style.backgroundColor = 'black'
+            caption.style.color = 'white'
+
+        }else {
+            body.style.backgroundColor = 'white'
+            caption.style.color = 'black'
+
+        }
+    })
     document.addEventListener('htmx:afterRequest', function(evt) {
 img.src = ''
 let url = JSON.parse(evt.detail.xhr.response).urls.regular
