@@ -72,7 +72,7 @@ input:checked + .slider:before {
 <body>
 
 
-<div class="flex flex-col gap-4 items-center justify-center h-screen">
+<div class="flex flex-col gap-4 pt-8 items-center justify-center h-screen">
     <div class="w-full flex justify-end mr-10">
         <label class="switch">
             <input type="checkbox" id="checkbox">
@@ -80,7 +80,7 @@ input:checked + .slider:before {
           </label>
     </div>
     <span class="text-bold" id="caption">Random image generator with htmx and unsplash API</span>
-    <div class="p-4 w-full">
+    <div class="p-4 w-full lg:flex lg:items-center lg:justify-center">
         <img id="image" src="https://images.unsplash.com/photo-1594548044919-75fd146b8c60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2565&q=80" alt="Click to generate!" class="w-[400px] h-[400px] "/>
 
     </div>
@@ -99,14 +99,22 @@ input:checked + .slider:before {
     let slider = document.querySelector('#checkbox')
     const body = document.querySelector('body')
     const caption = document.querySelector('#caption')
+    const button = document.querySelector('button')
     slider.addEventListener('change', e => {
         if(slider.checked){
             body.style.backgroundColor = 'black'
             caption.style.color = 'white'
+            button.style.backgroundColor = 'white'
+            button.style.color = 'black'
+
 
         }else {
             body.style.backgroundColor = 'white'
             caption.style.color = 'black'
+            button.style.backgroundColor = 'black'
+            button.style.color = 'white'
+
+
 
         }
     })
