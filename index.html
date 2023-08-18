@@ -67,6 +67,16 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
+
+.spinner-1 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 #0000;
+  animation: s1 1s infinite;
+}
+@keyframes s1 {to{transform: rotate(.5turn)}}
     </style>
 </head>
 <body>
@@ -79,8 +89,9 @@ input:checked + .slider:before {
             <span class="slider round"></span>
           </label>
     </div>
-    <span class="text-bold" id="caption">Random image generator with htmx and unsplash API</span>
-    <div class="p-4 w-full lg:flex lg:items-center lg:justify-center">
+    <div class="p-6 w-full flex flex flex-col flex items-center justify-center">
+        <p class="text-bold" id="caption">Random image generator with htmx and unsplash</p>
+        <span class="mb-4">API</span>
         <img id="image" src="https://images.unsplash.com/photo-1594548044919-75fd146b8c60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2565&q=80" alt="Click to generate!" class="w-[400px] h-[400px] "/>
 
     </div>
@@ -121,6 +132,7 @@ input:checked + .slider:before {
     document.addEventListener('htmx:afterRequest', function(evt) {
 img.src = ''
 let url = JSON.parse(evt.detail.xhr.response).urls.regular
+
 img.src = url
 });
 </script>
